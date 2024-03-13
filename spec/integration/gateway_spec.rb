@@ -28,7 +28,7 @@ RSpec.describe 'Mongo gateway' do
       jane = repo.users.by_name('Jane').one!
 
       expect(jane._id.to_s)
-        .to eql(users.find(name: 'Jane').one['_id'].to_s)
+        .to eql(users.find(name: 'Jane').one[:_id].to_s)
 
       expect(jane.name).to eql('Jane')
       expect(jane.email).to eql('jane@doe.org')
@@ -58,9 +58,7 @@ RSpec.describe 'Mongo gateway' do
       it 'inserts a document into collection' do
         id = BSON::ObjectId.new
 
-        result = commands.try do
-          commands.create.call(_id: id, name: 'joe', email: 'a.joe@doe.org')
-        end
+        result = commands.create.call(_id: id, name: 'joe', email: 'a.joe@doe.org')
 
         expect(result)
           .to match_array([{ _id: id, name: 'joe', email: 'a.joe@doe.org' }])
@@ -71,14 +69,12 @@ RSpec.describe 'Mongo gateway' do
       it 'updates a document in the collection' do
         jane = users.by_name('Jane').one!
 
-        result = commands.try do
-          commands.update.by_name('Jane').call(email: 'jane.doe@test.com')
-        end
+        result = commands.update.by_name('Jane').call(email: 'jane.doe@test.com')
 
         expect(result).to match_array(
-          [{ '_id' => BSON::ObjectId.from_string(jane._id),
-             'name' => 'Jane',
-             'email' => 'jane.doe@test.com' }]
+          [{ _id: BSON::ObjectId.from_string(jane._id),
+             name: 'Jane',
+             email: 'jane.doe@test.com' }]
         )
       end
     end

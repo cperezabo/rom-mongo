@@ -12,7 +12,7 @@ RSpec.shared_context 'users' do
 
       schema do
         # TODO: we need ROM::Mongo::Types (similar to ROM::SQL::Types)
-        attribute :_id, ROM::Types.Definition(BSON::ObjectId)
+        attribute :_id, ROM::Types.Nominal(BSON::ObjectId)
         attribute :name, ROM::Types::String
         attribute :email, ROM::Types::String
       end

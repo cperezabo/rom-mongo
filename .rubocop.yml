@@ -11,17 +11,17 @@ Lint/AssignmentInCondition:
   Enabled: false
 
 # No need to handle LoadError in Rakefile
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Exclude:
     - Rakefile
 
 # gemspec is a special snowflake
-Metrics/LineLength:
+Layout/LineLength:
   Exclude:
     - rom-mongo.gemspec
 
 # The enforced style doesn’t match Vim’s defaults
-Style/AlignParameters:
+Layout/ParameterAlignment:
   Enabled: false
 
 # UTF-8 is perfectly fine in comments
@@ -29,7 +29,7 @@ Style/AsciiComments:
   Enabled: false
 
 # Allow using braces for value-returning blocks
-Style/Blocks:
+Style/EndBlock:
   Enabled: false
 
 # Documentation checked by Inch CI
@@ -57,7 +57,7 @@ Style/SignalException:
   EnforcedStyle: only_raise
 
 # Need to be skipped for >-> usage
-Style/SpaceAroundOperators:
+Layout/SpaceAroundOperators:
   Enabled: false
 
 # Accept both single and double quotes
@@ -69,6 +69,9 @@ Style/TrivialAccessors:
   Enabled: false
 
 # This is a shim file for those who require 'rom-mongo'
-Style/FileName:
+Naming/FileName:
   Exclude:
     - lib/rom-mongo.rb
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'dry-types', git: 'https://github.com/dry-rb/dry-types', branch: 'master'
+gem 'dry-types', git: 'https://github.com/dry-rb/dry-types', branch: 'main'
 
-gem 'rom', git: 'https://github.com/rom-rb/rom', branch: 'master' do
+gem 'rom', git: 'https://github.com/rom-rb/rom', tag: 'v5.3.0' do
   gem 'rom-core'
   gem 'rom-mapper'
   gem 'rom-repository', group: :tools

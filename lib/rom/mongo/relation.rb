@@ -13,6 +13,8 @@ module ROM
 
       forward :insert, :find, :skip, :limit, :where, :order
 
+      option :output_schema, default: -> { schema.to_output_hash }
+
       # @api private
       def self.view_methods
         super + [:by_pk]

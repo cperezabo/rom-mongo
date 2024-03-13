@@ -27,7 +27,7 @@ module ROM
 
         def execute(attributes)
           collection.update_all('$set' => attributes)
-          collection.to_a
+          collection.to_a.map { |item| item.transform_keys(&:to_sym) }
         end
       end
 
